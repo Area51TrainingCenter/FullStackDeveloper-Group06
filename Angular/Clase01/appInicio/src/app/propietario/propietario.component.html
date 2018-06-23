@@ -1,0 +1,8 @@
+<form>
+	<div class="form-group">
+		<input type="text" class="form-control" [(ngModel)]="propietario" name="propietario"> {{propietario}}
+	</div>
+	<div class="form-group">
+		<button class="btn btn-success" (click)="grabar()" type="button" [disabled]="!propietario || propietario.trim()==''">Grabar</button>
+	</div>
+</form>

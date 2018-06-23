@@ -1,0 +1,9 @@
+div {
+	width: 100%;
+	background-color: red;
+	color:white;
+	font-family: Arial;
+	font-weight: bold;
+	padding: 10px 30px;
+	text-align: center
+}

@@ -14,6 +14,8 @@
 	<form>
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Nombre del curso" [(ngModel)]="nombreCurso" name="nombre-curso">
+			<p>{{nombreCurso}}</p>
+			<p [innerText]="nombreCurso"></p>
 			<!--<input type="text" class="form-control" placeholder="Nombre del curso" (input)="textoIngresado($event)"> -->
 		</div>
 		<table class="table table-hover table-striped" *ngIf="cursos.length; else noHayData">
@@ -41,4 +43,9 @@
 	</form>
 
 
+
 </h1>
+
+<app-propietario></app-propietario>
+<app-falla></app-falla>
+<app-exito></app-exito>

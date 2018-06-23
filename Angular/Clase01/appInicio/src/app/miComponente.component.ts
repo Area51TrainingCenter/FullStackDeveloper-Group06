@@ -55,6 +55,5 @@ export class AppMiComponente {
 			//const indice = this.cursos.indexOf(cursoNombre)
 			this.cursos.splice(indice, 1)
 		}
-
 	}
 }
