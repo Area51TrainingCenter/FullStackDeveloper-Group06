@@ -19,4 +19,10 @@ export class ListadoComponent implements OnInit {
 		this.onBorrar.emit(indice)
 	}
 
+	obtenerColor(edad: number): string {
+		if (edad >= 0 && edad < 20) return 'rgba(0,255,0,0.3)'
+		if (edad >= 20 && edad < 60) return 'rgba(255,0,0,0.3)'
+		if (edad >= 60) return 'rgba(0,0,255, .3)'
+	}
+
 }
