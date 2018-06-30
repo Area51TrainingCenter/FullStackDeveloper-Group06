@@ -1,0 +1,25 @@
+<div class="col-12" *ngIf="lista.length > 0; else NoHayNada">
+	<table class="table table-hover table-striped col-12">
+		<thead>
+			<tr>
+				<th>Usuario</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let user of lista; let indice = index">
+				<!--<td [innerText]="user"></td>-->
+				<td>{{user}}</td>
+				<td>
+					<button class="btn btn-danger" (click)="borrarUsuario(indice)">Borrar</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- 
+			document.querySelector
+		-->
+</div>
+<ng-template #NoHayNada>
+	<span class="help-block text-center col-12">No existen usuarios</span>
+</ng-template>

@@ -6,23 +6,16 @@ import { Component } from '@angular/core';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	title = 'app';
-	nombreUsuario: string
-	usuario: string
 	// listaUsuarios: string[]
 	listaUsuarios: Array<string> = []
 
-	agregar() {
-		if (this.nombreUsuario.trim() != "") {
-			this.listaUsuarios.push(this.nombreUsuario)
-			this.nombreUsuario = ""
-		}
-
+	agregar(nombreUsuario: string) {
+		this.listaUsuarios.push(nombreUsuario)
 		console.log(this.listaUsuarios)
 	}
 
 	obteniendoNombreUsuario(evento) {
-		this.usuario = evento.target.value
+		//this.usuario = evento.target.value
 		//console.log(usuario)
 	}
 
