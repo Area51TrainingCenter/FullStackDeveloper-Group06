@@ -8,8 +8,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class FormularioComponent implements OnInit {
 	nombreUsuario: string
+	edad: number
 
-	@Output() onNuevo = new EventEmitter<string>()
+	@Output() onNuevo = new EventEmitter<{}>()
 
 	constructor() { }
 
@@ -17,9 +18,18 @@ export class FormularioComponent implements OnInit {
 	}
 
 	agregar() {
+		const datosUsuario = {
+			nombreUsuario: this.nombreUsuario,
+			edad: this.edad
+		}
 		if (this.nombreUsuario.trim() != "") {
+			this.onNuevo.emit(datosUsuario)
+			this.nombreUsuario = ""
+			this.edad = 0
+		}
+		/*if (this.nombreUsuario.trim() != "") {
 			this.onNuevo.emit(this.nombreUsuario)
 			this.nombreUsuario = ""
-		}
+		}*/
 	}
 }

@@ -3,13 +3,15 @@
 		<thead>
 			<tr>
 				<th>Usuario</th>
+				<th>Edad</th>
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr *ngFor="let user of lista; let indice = index">
 				<!--<td [innerText]="user"></td>-->
-				<td>{{user}}</td>
+				<td>{{user.nombreUsuario}}</td>
+				<td>{{user.edad}}</td>
 				<td>
 					<button class="btn btn-danger" (click)="borrarUsuario(indice)">Borrar</button>
 				</td>

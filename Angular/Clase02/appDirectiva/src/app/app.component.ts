@@ -7,11 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	// listaUsuarios: string[]
-	listaUsuarios: Array<string> = []
+	listaUsuarios: Array<{}> = []
 
-	agregar(nombreUsuario: string) {
+	/*agregar(nombreUsuario: string) {
 		this.listaUsuarios.push(nombreUsuario)
 		console.log(this.listaUsuarios)
+	}*/
+
+	agregar(datosUsuario) {
+		this.listaUsuarios.push(datosUsuario)
 	}
 
 	obteniendoNombreUsuario(evento) {

@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ListadoComponent implements OnInit {
 
-	@Input() lista: Array<string>
+	@Input() lista: Array<{}>
 	@Output() onBorrar = new EventEmitter<number>()
 
 	constructor() { }
