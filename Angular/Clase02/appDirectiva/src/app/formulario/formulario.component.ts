@@ -9,6 +9,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class FormularioComponent implements OnInit {
 	nombreUsuario: string
 	edad: number
+	estado: string = "Casado"
 
 	@Output() onNuevo = new EventEmitter<{}>()
 

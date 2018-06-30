@@ -1,4 +1,11 @@
 <div class="col-12" *ngIf="lista.length > 0; else NoHayNada">
+	<div class="col-6">
+		<form>
+			<div class="form-group">
+				<input type="text" class="form-control" (input)="filtrar($event.target.value)" placeholder="Usuario a buscar">
+			</div>
+		</form>
+	</div>
 	<table class="table col-12">
 		<thead>
 			<tr>
@@ -8,9 +15,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let user of lista; let indice = index">
+			<!--<tr directiva-basica [colorOriginal]="'blue'" [colorHover]="'green'" [ngClass]="{mayores: soyViejo(user.edad), menores: soyJoven(user.edad)}"
+				*ngFor="let user of lista; let indice = index">-->
+
+			<tr [directiva-basica]="'blue'" [colorHover]="'green'" *ngFor="let user of lista; let indice = index">
 				<!--<td [innerText]="user"></td>-->
-				<td [ngStyle]="{backgroundColor: obtenerColor(user.edad)}">{{user.nombreUsuario}}</td>
+				<td>{{user.nombreUsuario}}</td>
 				<td>{{user.edad}}</td>
 				<td>
 					<button class="btn btn-danger" (click)="borrarUsuario(indice)">Borrar</button>
