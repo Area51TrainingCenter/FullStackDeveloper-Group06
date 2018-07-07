@@ -1,0 +1,5 @@
+<button (click)="toggle()">Mostrar Datos Usuario</button>
+<p *ngIf="visible">Usuario: {{usuario.correo}}</p>
+<ul>
+	<li *ngFor="let vez of veces; let indice=index" [ngStyle]="{backgroundColor: color(indice+1)}">{{indice+1}}</li>
+</ul>
