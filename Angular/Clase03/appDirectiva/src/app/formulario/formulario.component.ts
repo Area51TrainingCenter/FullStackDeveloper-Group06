@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Usuario } from "../usuario"
+import { IUsuario } from "../usuario"
 
 @Component({
 	selector: 'app-formulario',
@@ -7,15 +7,15 @@ import { Usuario } from "../usuario"
 	styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent implements OnInit {
-	usuario: Usuario
+	usuario: IUsuario = {}
 	/*nombreUsuario: string
 	edad: number
 	estado: string = "Casado"*/
 
-	@Output() onNuevo = new EventEmitter<Usuario>()
+	@Output() onNuevo = new EventEmitter<IUsuario>()
 
 	constructor() {
-		this.usuario = new Usuario("", 0, "")
+		//this.usuario = new Usuario("", 0, "")
 	}
 
 	ngOnInit() {

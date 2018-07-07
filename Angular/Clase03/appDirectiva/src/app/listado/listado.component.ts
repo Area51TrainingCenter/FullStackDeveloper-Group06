@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
-import { Usuario } from '../usuario';
+import { IUsuario } from '../usuario';
 
 @Component({
 	selector: 'app-listado',
@@ -8,10 +8,10 @@ import { Usuario } from '../usuario';
 })
 export class ListadoComponent {
 
-	@Input() lista: Array<Usuario>
+	@Input() lista: Array<IUsuario>
 	@Output() onBorrar = new EventEmitter<number>()
 
-	listaOriginal: Array<Usuario>
+	listaOriginal: Array<IUsuario>
 
 	constructor() { }
 

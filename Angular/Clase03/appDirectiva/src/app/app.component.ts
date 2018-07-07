@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Usuario } from './usuario';
+import { IUsuario } from './usuario';
 
 @Component({
 	selector: 'app-root',
@@ -8,14 +8,14 @@ import { Usuario } from './usuario';
 })
 export class AppComponent {
 	// listaUsuarios: string[]
-	listaUsuarios: Array<Usuario> = []
+	listaUsuarios: Array<IUsuario> = []
 
 	/*agregar(nombreUsuario: string) {
 		this.listaUsuarios.push(nombreUsuario)
 		console.log(this.listaUsuarios)
 	}*/
 
-	agregar(usuario: Usuario) {
+	agregar(usuario: IUsuario) {
 		this.listaUsuarios.push(usuario)
 		this.listaUsuarios = this.listaUsuarios.slice(0)
 	}
