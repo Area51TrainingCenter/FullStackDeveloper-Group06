@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { IUsuario } from "../usuario"
+import { UsuarioService } from '../usuarios.service';
 
 
 @Component({
@@ -14,14 +15,14 @@ export class FormularioComponent implements OnInit {
 	@ViewChild("estado") estado: ElementRef
 
 	usuario: IUsuario = {}
+
 	/*nombreUsuario: string
 	edad: number
 	estado: string = "Casado"*/
 
-	@Output() onNuevo = new EventEmitter<IUsuario>()
+	//@Output() onNuevo = new EventEmitter<IUsuario>()
 
-	constructor() {
-		//this.usuario = new Usuario("", 0, "")
+	constructor(private usuarioService: UsuarioService) {
 	}
 
 	ngOnInit() {
@@ -34,7 +35,9 @@ export class FormularioComponent implements OnInit {
 			this.usuario.edad = +this.edad.nativeElement.value
 			this.usuario.estado = this.estado.nativeElement.value
 
-			this.onNuevo.emit(Object.assign({}, this.usuario))
+			this.usuarioService.insertar(Object.assign({}, this.usuario))
+
+			//this.onNuevo.emit(Object.assign({}, this.usuario))
 		}
 		/*if (this.usuario.nombreUsuario.trim() != "") {
 			this.onNuevo.emit(this.usuario)

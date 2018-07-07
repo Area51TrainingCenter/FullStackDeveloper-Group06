@@ -1,11 +1,10 @@
 <div class="container">
-	<app-lista-personal></app-lista-personal>
 	<div class="row">
 		<div class="col-6">
-			<app-formulario (onNuevo)="agregar($event)"></app-formulario>
+			<app-formulario></app-formulario>
 		</div>
 		<div class="col-6">
-			<app-listado [lista]="listaUsuarios" (onBorrar)="borrarUsuario($event)">
+			<app-listado>
 				<h4 #titulo>Listado de Usuarios</h4>
 			</app-listado>
 		</div>

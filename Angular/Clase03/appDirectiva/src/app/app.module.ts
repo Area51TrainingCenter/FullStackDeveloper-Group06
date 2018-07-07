@@ -11,6 +11,8 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { ListaPersonalComponent } from './lista-personal/lista-personal.component';
 import { ActivoComponent } from './activo/activo.component';
 import { CesadoComponent } from './cesado/cesado.component';
+import { UsuarioService } from './usuarios.service';
+import { UtilitarioService } from './utilitario.service';
 
 @NgModule({
 	declarations: [
@@ -29,7 +31,7 @@ import { CesadoComponent } from './cesado/cesado.component';
 		BrowserModule,
 		FormsModule
 	],
-	providers: [],
+	providers: [UsuarioService, UtilitarioService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,28 +7,28 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	// listaUsuarios: string[]
-	listaUsuarios: Array<{}> = []
+	// listaUsuarios: Array<{}> = []
 
 	/*agregar(nombreUsuario: string) {
 		this.listaUsuarios.push(nombreUsuario)
 		console.log(this.listaUsuarios)
 	}*/
 
-	agregar(datosUsuario) {
+	/*agregar(datosUsuario) {
 		this.listaUsuarios.push(datosUsuario)
 		this.listaUsuarios = this.listaUsuarios.slice(0)
-	}
+	}*/
 
 	obteniendoNombreUsuario(evento) {
 		//this.usuario = evento.target.value
 		//console.log(usuario)
 	}
 
-	borrarUsuario(indice: number) {
+	/*borrarUsuario(indice: number) {
 		if (confirm("¿Está seguro?")) {
 			this.listaUsuarios.splice(indice, 1)
 		}
-	}
+	}*7
 
 	/*borrarUsuario(nombre: string) {
 		if (confirm("¿Está seguro?")) {

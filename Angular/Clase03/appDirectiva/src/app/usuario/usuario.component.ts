@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IUsuario } from '../usuario';
+import { UsuarioService } from '../usuarios.service';
 
 @Component({
 	selector: 'app-usuario',
@@ -10,15 +11,14 @@ export class UsuarioComponent implements OnInit {
 	@Input() item: IUsuario
 	@Input() indice: number
 
-	@Output() onEliminar = new EventEmitter<number>()
 
-	constructor() { }
+	constructor(private usuarioService: UsuarioService) { }
 
 	ngOnInit() {
 	}
 
 	eliminar() {
-		this.onEliminar.emit(this.indice)
+		this.usuarioService.eliminar(this.indice)
 	}
 
 	ngOnDestroy() {

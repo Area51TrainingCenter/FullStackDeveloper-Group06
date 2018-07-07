@@ -7,7 +7,7 @@
 			</div>
 		</form>
 	</div>
-	<app-usuario *ngFor="let item of lista; let indice=index" [item]="item" [indice]="indice" (onEliminar)="borrarUsuario($event)"></app-usuario>
+	<app-usuario *ngFor="let item of lista; let indice=index" [item]="item" [indice]="indice"></app-usuario>
 </div>
 <ng-template #NoHayNada>
 	<span class="help-block text-center col-12">No existen usuarios</span>

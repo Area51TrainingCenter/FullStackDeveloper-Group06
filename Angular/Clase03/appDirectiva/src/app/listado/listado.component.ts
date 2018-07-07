@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewEncapsulation, ContentChild, ElementRef } from '@angular/core';
 import { IUsuario } from '../usuario';
+import { UsuarioService } from '../usuarios.service';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -11,12 +13,25 @@ import { IUsuario } from '../usuario';
 export class ListadoComponent {
 	@ContentChild("titulo") titulo: ElementRef
 
-	@Input() lista: Array<IUsuario>
-	@Output() onBorrar = new EventEmitter<number>()
+	/*@Input() lista: Array<IUsuario>
+	@Output() onBorrar = new EventEmitter<number>()*/
 
+	lista: Array<IUsuario>
 	listaOriginal: Array<IUsuario>
 
-	constructor() {
+	suscripcion: Subscription
+
+	constructor(private usuarioService: UsuarioService) {
+		this.lista = this.usuarioService.listar()
+
+		this.suscripcion = this.usuarioService.onInsercion.subscribe(
+			(data: IUsuario[]) => this.lista = data
+		)
+
+		this.usuarioService.onEliminacion.subscribe(
+			() => this.lista = this.usuarioService.listar()
+		)
+
 		console.log("Se ejecutó el constructor")
 	}
 
@@ -51,12 +66,13 @@ export class ListadoComponent {
 	}
 
 	ngOnDestroy() {
+		this.suscripcion.unsubscribe()
 		console.log("Se ejecutó el ngOnDestroy")
 	}
 
 
 	borrarUsuario(indice: number) {
-		this.onBorrar.emit(indice)
+		//this.onBorrar.emit(indice)
 	}
 
 	obtenerColor(edad: number): string {
