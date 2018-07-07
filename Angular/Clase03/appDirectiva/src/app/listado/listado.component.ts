@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewEncapsulation, ContentChild, ElementRef } from '@angular/core';
 import { IUsuario } from '../usuario';
+
 
 @Component({
 	selector: 'app-listado',
@@ -8,13 +9,20 @@ import { IUsuario } from '../usuario';
 	encapsulation: ViewEncapsulation.None
 })
 export class ListadoComponent {
+	@ContentChild("titulo") titulo: ElementRef
 
 	@Input() lista: Array<IUsuario>
 	@Output() onBorrar = new EventEmitter<number>()
 
 	listaOriginal: Array<IUsuario>
 
-	constructor() { }
+	constructor() {
+
+	}
+
+	ngOnInit() {
+		this.titulo.nativeElement.style.color = "green"
+	}
 
 	ngOnChanges(changes: SimpleChanges): void {
 		this.listaOriginal = changes.lista.currentValue

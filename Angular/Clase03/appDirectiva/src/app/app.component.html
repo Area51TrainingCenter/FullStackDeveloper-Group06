@@ -4,7 +4,9 @@
 			<app-formulario (onNuevo)="agregar($event)"></app-formulario>
 		</div>
 		<div class="col-6">
-			<app-listado [lista]="listaUsuarios" (onBorrar)="borrarUsuario($event)"></app-listado>
+			<app-listado [lista]="listaUsuarios" (onBorrar)="borrarUsuario($event)">
+				<h4 #titulo>Listado de Usuarios</h4>
+			</app-listado>
 		</div>
 	</div>
 </div>
