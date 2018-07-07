@@ -1,0 +1,9 @@
+<p *ngFor="let persona of lista; let indice = index" [ngStyle]="{backgroundColor: obtenerColor(persona.seleccionado)}">
+	<span class="help-block">Nombre: {{persona.nombre}}</span>
+	<br>
+	<span class="help-block">Sexo: {{persona.sexo}}</span>
+	<br>
+	<span class="help-block">Área: {{persona.area}}</span>
+	<br>
+	<button class="btn btn-success" (click)="seleccionar(persona, indice)">Seleccionar</button>
+</p>

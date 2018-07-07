@@ -8,6 +8,9 @@ import { ListadoComponent } from './listado/listado.component';
 import { EstadoCivilDirective } from './estado-civil.directive';
 import { DatosUsuarioComponent } from './datos-usuario/datos-usuario.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { ListaPersonalComponent } from './lista-personal/lista-personal.component';
+import { ActivoComponent } from './activo/activo.component';
+import { CesadoComponent } from './cesado/cesado.component';
 
 @NgModule({
 	declarations: [
@@ -17,7 +20,10 @@ import { UsuarioComponent } from './usuario/usuario.component';
 		DirectivaBasicaDirective,
 		EstadoCivilDirective,
 		DatosUsuarioComponent,
-		UsuarioComponent
+		UsuarioComponent,
+		ListaPersonalComponent,
+		ActivoComponent,
+		CesadoComponent
 	],
 	imports: [
 		BrowserModule,

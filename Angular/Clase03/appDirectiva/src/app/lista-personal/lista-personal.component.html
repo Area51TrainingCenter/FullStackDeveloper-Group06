@@ -1,0 +1,11 @@
+<div class="row">
+	<div class="col-5">
+		<app-activo [lista]="activos" (seleccionado)="seleccion($event)"></app-activo>
+	</div>
+	<div class="col-2">
+		<button class="btn btn-success" (click)="cesar()">Cesar</button>
+	</div>
+	<div class="col-5">
+		<app-cesado [lista]="cesados"></app-cesado>
+	</div>
+</div>
