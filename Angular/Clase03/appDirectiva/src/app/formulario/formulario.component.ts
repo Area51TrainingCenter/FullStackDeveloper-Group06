@@ -1,10 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { IUsuario } from "../usuario"
 
 @Component({
 	selector: 'app-formulario',
 	templateUrl: './formulario.component.html',
-	styleUrls: ['./formulario.component.css']
+	styleUrls: ['./formulario.component.css'],
+	encapsulation: ViewEncapsulation.Native
 })
 export class FormularioComponent implements OnInit {
 	usuario: IUsuario = {}
