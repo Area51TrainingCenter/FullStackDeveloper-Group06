@@ -1,19 +1,17 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Usuario } from '../usuario';
 
 @Component({
 	selector: 'app-listado',
 	templateUrl: './listado.component.html',
 	styleUrls: ['./listado.component.css']
 })
-export class ListadoComponent implements OnInit {
+export class ListadoComponent {
 
-
-
-	@Input() lista: Array<{}>
+	@Input() lista: Array<Usuario>
 	@Output() onBorrar = new EventEmitter<number>()
 
-	listaFiltrada: Array<{}> = []
-	listaOriginal: Array<{}>
+	listaOriginal: Array<Usuario>
 
 	constructor() { }
 
@@ -21,12 +19,6 @@ export class ListadoComponent implements OnInit {
 		this.listaOriginal = changes.lista.currentValue
 		console.log(changes)
 	}
-
-	ngOnInit() {
-		//this.listaFiltrada = this.lista.slice(0)
-	}
-
-
 
 	borrarUsuario(indice: number) {
 		this.onBorrar.emit(indice)
