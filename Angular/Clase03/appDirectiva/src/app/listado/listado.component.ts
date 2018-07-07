@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { IUsuario } from '../usuario';
 
 @Component({
 	selector: 'app-listado',
 	templateUrl: './listado.component.html',
-	styleUrls: ['./listado.component.css']
+	styleUrls: ['./listado.component.css'],
+	encapsulation: ViewEncapsulation.None
 })
 export class ListadoComponent {
 

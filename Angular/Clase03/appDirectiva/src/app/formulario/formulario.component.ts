@@ -5,7 +5,7 @@ import { IUsuario } from "../usuario"
 	selector: 'app-formulario',
 	templateUrl: './formulario.component.html',
 	styleUrls: ['./formulario.component.css'],
-	encapsulation: ViewEncapsulation.Native
+	encapsulation: ViewEncapsulation.None
 })
 export class FormularioComponent implements OnInit {
 	usuario: IUsuario = {}
