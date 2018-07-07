@@ -18,7 +18,7 @@ export class ActivoComponent implements OnInit {
 		console.log(this.lista)
 	}
 
-	seleccionar(persona: IPersonal, ind) {
+	seleccionar(ind) {
 		this.seleccionado.emit(ind)
 	}
 
