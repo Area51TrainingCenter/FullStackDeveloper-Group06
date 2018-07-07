@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { IUsuario } from "../usuario"
+
 
 @Component({
 	selector: 'app-formulario',
@@ -8,6 +9,10 @@ import { IUsuario } from "../usuario"
 	encapsulation: ViewEncapsulation.None
 })
 export class FormularioComponent implements OnInit {
+	@ViewChild("nombreUsuario") nombreUsuario: ElementRef
+	@ViewChild("edad") edad: ElementRef
+	@ViewChild("estado") estado: ElementRef
+
 	usuario: IUsuario = {}
 	/*nombreUsuario: string
 	edad: number
@@ -24,9 +29,16 @@ export class FormularioComponent implements OnInit {
 	}
 
 	agregar() {
-		if (this.usuario.nombreUsuario.trim() != "") {
+		if (this.nombreUsuario.nativeElement.value.trim() != "") {
+			this.usuario.nombreUsuario = this.nombreUsuario.nativeElement.value
+			this.usuario.edad = +this.edad.nativeElement.value
+			this.usuario.estado = this.estado.nativeElement.value
+
 			this.onNuevo.emit(this.usuario)
 		}
+		/*if (this.usuario.nombreUsuario.trim() != "") {
+			this.onNuevo.emit(this.usuario)
+		}*/
 
 		/*const datosUsuario = {
 			nombreUsuario: this.nombreUsuario,
