@@ -34,7 +34,7 @@ export class FormularioComponent implements OnInit {
 			this.usuario.edad = +this.edad.nativeElement.value
 			this.usuario.estado = this.estado.nativeElement.value
 
-			this.onNuevo.emit(this.usuario)
+			this.onNuevo.emit(Object.assign({}, this.usuario))
 		}
 		/*if (this.usuario.nombreUsuario.trim() != "") {
 			this.onNuevo.emit(this.usuario)

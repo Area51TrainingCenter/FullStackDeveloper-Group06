@@ -1,58 +1,31 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewEncapsulation, ContentChild, ElementRef } from '@angular/core';
-import { IUsuario } from '../usuario';
-
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
 	selector: 'app-listado',
 	templateUrl: './listado.component.html',
-	styleUrls: ['./listado.component.css'],
-	encapsulation: ViewEncapsulation.None
+	styleUrls: ['./listado.component.css']
 })
-export class ListadoComponent {
-	@ContentChild("titulo") titulo: ElementRef
+export class ListadoComponent implements OnInit {
 
-	@Input() lista: Array<IUsuario>
+
+
+	@Input() lista: Array<{}>
 	@Output() onBorrar = new EventEmitter<number>()
 
-	listaOriginal: Array<IUsuario>
+	listaFiltrada: Array<{}> = []
+	listaOriginal: Array<{}>
 
-	constructor() {
-		console.log("Se ejecutó el constructor")
-	}
+	constructor() { }
 
 	ngOnChanges(changes: SimpleChanges): void {
-		console.log("Se ejecutó el ngOnChanges")
 		this.listaOriginal = changes.lista.currentValue
-		//console.log(changes)
+		console.log(changes)
 	}
 
 	ngOnInit() {
-		console.log("Se ejecutó el ngOnInit")
-		this.titulo.nativeElement.style.color = "green"
+		//this.listaFiltrada = this.lista.slice(0)
 	}
 
-	ngDoCheck() {
-		console.log("Se ejecutó el ngDoCheck")
-	}
-
-	ngAfterContentInit() {
-		console.log("Se ejecutó el ngAfterContentInit")
-	}
-
-	ngAfterContentChecked() {
-		console.log("Se ejecutó el ngAfterContentChecked")
-	}
-	ngAfterViewInit() {
-		console.log("Se ejecutó el ngAfterViewInit")
-	}
-
-	ngAfterViewChecked() {
-		console.log("Se ejecutó el ngAfterViewChecked")
-	}
-
-	ngOnDestroy() {
-		console.log("Se ejecutó el ngOnDestroy")
-	}
 
 
 	borrarUsuario(indice: number) {

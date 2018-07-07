@@ -7,31 +7,7 @@
 			</div>
 		</form>
 	</div>
-	<table class="table col-12">
-		<thead>
-			<tr>
-				<th>Usuario</th>
-				<th>Edad</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<!--<tr directiva-basica [colorOriginal]="'blue'" [colorHover]="'green'" [ngClass]="{mayores: soyViejo(user.edad), menores: soyJoven(user.edad)}"
-				*ngFor="let user of lista; let indice = index">-->
-
-			<tr [directiva-basica]="'blue'" [colorHover]="'green'" *ngFor="let user of lista; let indice = index">
-				<!--<td [innerText]="user"></td>-->
-				<td>{{user.nombreUsuario}}</td>
-				<td>{{user.edad}}</td>
-				<td>
-					<button class="btn btn-danger" (click)="borrarUsuario(indice)">Borrar</button>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<!-- 
-			document.querySelector
-		-->
+	<app-usuario *ngFor="let item of lista; let indice=index" [item]="item" [indice]="indice" (onEliminar)="borrarUsuario($event)"></app-usuario>
 </div>
 <ng-template #NoHayNada>
 	<span class="help-block text-center col-12">No existen usuarios</span>
