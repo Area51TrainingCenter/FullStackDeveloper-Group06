@@ -1,0 +1,19 @@
+<h2>Listado</h2>
+<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let usuario of lista; let indice = index">
+			<td>{{usuario.nombre}}</td>
+			<td>{{usuario.apellido}}</td>
+			<td>
+				<a href="#" class="btn btn-success" (click)="editar(indice)">Editar</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

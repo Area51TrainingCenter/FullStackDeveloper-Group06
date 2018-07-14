@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+	<a class="navbar-brand" routerLink="">Sistema</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+	 aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarCollapse">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home
+					<span class="sr-only">(current)</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" routerLink="/cantante" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Cantante</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" [routerLink]="['cantante','edicion', 20]" routerLinkActive="active">Cantante Edición</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" [routerLink]="['cantante', 'nuevo']" [queryParams]="{titulo:'Nuevo Cantante', anno: 2018}" fragment="insercion"
+				 routerLinkActive="active">Cantante Nuevo</a>
+			</li>
+		</ul>
+
+	</div>
+</nav>
+
+{{fechaHoy}}
+
+<router-outlet></router-outlet>
