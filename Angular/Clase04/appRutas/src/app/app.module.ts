@@ -10,9 +10,13 @@ import { CantanteNuevoComponent } from './cantante-nuevo/cantante-nuevo.componen
 
 const rutas: Route[] = [
 	{ path: "", component: HomeComponent, pathMatch: "full" },
-	{ path: "cantante", component: CantanteComponent, pathMatch: "full" },
-	{ path: "cantante/nuevo", component: CantanteNuevoComponent },
-	{ path: "cantante/edicion/:id", component: CantanteEdicionComponent }
+	{
+		path: "cantante", component: CantanteComponent, children: [
+			{ path: "nuevo", component: CantanteNuevoComponent },
+			{ path: "edicion/:id", component: CantanteEdicionComponent }
+		]
+	}
+
 ]
 
 @NgModule({
