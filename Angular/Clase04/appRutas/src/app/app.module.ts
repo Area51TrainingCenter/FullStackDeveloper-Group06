@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { CantanteComponent } from './cantante/cantante.component';
 import { CantanteEdicionComponent } from './cantante-edicion/cantante-edicion.component';
 import { CantanteNuevoComponent } from './cantante-nuevo/cantante-nuevo.component';
+import { NoEncontradaComponent } from './no-encontrada/no-encontrada.component';
 
 const rutas: Route[] = [
 	{ path: "", component: HomeComponent, pathMatch: "full" },
@@ -15,7 +16,9 @@ const rutas: Route[] = [
 			{ path: "nuevo", component: CantanteNuevoComponent },
 			{ path: "edicion/:id", component: CantanteEdicionComponent }
 		]
-	}
+	},
+	//{ path: "**", component: NoEncontradaComponent }
+	{ path: "**", redirectTo: "" }
 
 ]
 
@@ -25,7 +28,8 @@ const rutas: Route[] = [
 		HomeComponent,
 		CantanteComponent,
 		CantanteEdicionComponent,
-		CantanteNuevoComponent
+		CantanteNuevoComponent,
+		NoEncontradaComponent
 	],
 	imports: [
 		BrowserModule,
