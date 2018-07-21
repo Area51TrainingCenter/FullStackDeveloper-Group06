@@ -14,16 +14,16 @@ export class AutorizacionGuard implements CanActivate, CanActivateChild {
 		state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
 		const esSuRol: boolean = this.seguridadService.rolDelUsuario("admin")
-		//if (!esSuRol) this.ruteador.navigate([""])
-		alert("No está autorizado")
+		if (!esSuRol) this.ruteador.navigate([""])
+		//alert("No está autorizado")
 
 		return esSuRol;
 	}
 
 	canActivateChild(): boolean {
 		const esSuRol: boolean = this.seguridadService.rolDelUsuario("admin")
-		//if (!esSuRol) this.ruteador.navigate([""])
-		alert("No está autorizado")
+		if (!esSuRol) this.ruteador.navigate([""])
+		//alert("No está autorizado")
 
 		return esSuRol;
 	}

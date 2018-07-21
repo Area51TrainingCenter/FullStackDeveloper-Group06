@@ -11,6 +11,7 @@ import { RouterModule, Route } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { AutenticacionGuard } from './guards/autenticacion.guard';
 import { AutorizacionGuard } from './guards/autorizacion.guard';
+import { NoSalvadoGuard } from './guards/no-salvado.guard';
 
 const rutas: Route[] = [
 	{ path: "", component: LoginComponent, pathMatch: "full" },
@@ -18,7 +19,7 @@ const rutas: Route[] = [
 	{
 		path: "cantante", component: ListadoComponent, canActivate: [AutenticacionGuard], children: [
 			{ path: "nuevo", component: NuevoComponent },
-			{ path: "edicion", canActivate: [AutorizacionGuard], component: EdicionComponent }
+			{ path: "edicion", canActivate: [AutorizacionGuard], canDeactivate: [NoSalvadoGuard], component: EdicionComponent }
 		]
 	}
 ]
