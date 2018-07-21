@@ -8,14 +8,16 @@ import { EdicionComponent } from './cantante/edicion/edicion.component';
 import { NuevoComponent } from './cantante/nuevo/nuevo.component';
 import { RouterModule, Route } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { AutenticacionGuard } from './guards/autenticacion.guard';
+import { AutorizacionGuard } from './guards/autorizacion.guard';
 
 const rutas: Route[] = [
 	{ path: "", component: LoginComponent, pathMatch: "full" },
-	{ path: "home", component: HomeComponent },
+	{ path: "home", component: HomeComponent, canActivate: [AutenticacionGuard] },
 	{
-		path: "cantante", component: ListadoComponent, children: [
+		path: "cantante", component: ListadoComponent, canActivate: [AutenticacionGuard], children: [
 			{ path: "nuevo", component: NuevoComponent },
-			{ path: "edicion", component: EdicionComponent }
+			{ path: "edicion", canActivate: [AutorizacionGuard], component: EdicionComponent }
 		]
 	}
 ]

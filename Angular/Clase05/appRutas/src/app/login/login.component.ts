@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 	}
 
 	loguearse() {
-		const usuario: Usuario = { correo: "sergio@correo.com", contrasena: "123" }
+		const usuario: Usuario = { correo: "andrea@correo.com", contrasena: "456" }
 
 		this.seguridadService.login(usuario)
 	}

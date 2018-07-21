@@ -12,8 +12,8 @@ export class SeguridadService {
 	onCambioEstado = new EventEmitter<boolean>()
 
 	listaUsuarios: Usuario[] = [
-		{ correo: "sergio@correo.com", contrasena: "123", nombre: "Sergio" },
-		{ correo: "andrea@correo.com", contrasena: "456", nombre: "Andrea" }
+		{ correo: "sergio@correo.com", contrasena: "123", nombre: "Sergio", rol: "admin" },
+		{ correo: "andrea@correo.com", contrasena: "456", nombre: "Andrea", rol: "operador" }
 	]
 
 	constructor(private ruteador: Router) { }
@@ -45,5 +45,11 @@ export class SeguridadService {
 	estaLogueado(): boolean {
 		this.usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"))
 		return this.usuarioLogueado ? true : false
+	}
+
+	rolDelUsuario(rol: string): boolean {
+		if (!this.usuarioLogueado) this.usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"))
+
+		return this.usuarioLogueado.rol === rol
 	}
 }
