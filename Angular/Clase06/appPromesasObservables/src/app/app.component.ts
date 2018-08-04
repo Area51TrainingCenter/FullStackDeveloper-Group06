@@ -10,24 +10,25 @@ export class AppComponent {
 	nombre: Promise<string>
 
 	ngOnInit() {
-		const promesa: Promise<{}> = new Promise((resolve, reject) => {
-			/*setTimeout(() => {
-				console.log("promesa resuelta")
-				resolve("Sergio")
-			}, 5000)*/
-
-			fetch("https://aws.random.cat/meow")
-				.then((data) => data.json())
-				.then(respuesta => resolve(respuesta))
-
-
+		const promesa1 = new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve([2018, 2014, 2010])
+			}, 4000)
 		})
 
-		//promesa.then((data: any) => this.nombre = data)
-		//this.nombre = promesa
-		this.imagenGato = promesa.then((archivo: any) => archivo.file)
+		const promesa2 = new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve(["Forlán", "Suarez", "Cavanni"])
+			}, 6000)
+		})
 
-		promesa.catch(error => console.log(error))
+		Promise.all([promesa1, promesa2])
+			.then(data => {
+				console.log(data[0])
+				console.log(data[1])
+				console.log("Trabajo concluido")
+			})
+			.catch(error => console.log(error))
 
 	}
 
