@@ -9,37 +9,52 @@ import { Observable, Observer } from 'rxjs';
 export class AppComponent {
 	imagenGato: Promise<{}>
 	nombre: Promise<string>
+	paginaActual: number = 0
+	ordenamientoActual: string = "nombre"
+	textoBuscadoActual: string = ""
 
 	ngOnInit() {
-		const objectoObservable: Observable<string> = Observable.create(
-			(observador: Observer<string>) => {
+		const paginador: Observable<number> = Observable.create(
+			(observador: Observer<number>) => {
 				setTimeout(() => {
-					observador.next("Llegó el inspector de Luz del Sur")
+					this.paginaActual = 2
+					observador.next(2)
 				}, 2000)
-
-				setTimeout(() => {
-					observador.next("Llegó el inspector de la municipalidad")
-				}, 5000)
-
-				setTimeout(() => {
-					observador.complete()
-				}, 7000)
-
-				setTimeout(() => {
-					observador.error("Se incendió la casa")
-				}, 8000)
-
-				setTimeout(() => {
-					observador.next("La ventana está abierta")
-				}, 10000)
 			}
 		)
 
-		objectoObservable.subscribe(
-			ftnNext => console.log(ftnNext),
-			ftnError => console.log(ftnError),
-			() => console.log("Se dejó de observar")
+		paginador.subscribe(
+			pagina => console.log(`El usuario va la página '${this.paginaActual}, está ordenando por el campo '${this.ordenamientoActual}' y está buscando '${this.textoBuscadoActual}'. Hay que llamar nuevamente al api rest`)
 		)
+
+		const ordenador: Observable<string> = Observable.create(
+			(observador: Observer<string>) => {
+				setTimeout(() => {
+					this.ordenamientoActual = "nombre"
+					observador.next("nombre")
+				}, 4000)
+			}
+		)
+
+		ordenador.subscribe(
+			campo => console.log(`El usuario va la página '${this.paginaActual}, está ordenando por el campo '${this.ordenamientoActual}' y está buscando '${this.textoBuscadoActual}'. Hay que llamar nuevamente al api rest`)
+		)
+
+		const buscador: Observable<string> = Observable.create(
+			(observador: Observer<string>) => {
+				setTimeout(() => {
+					this.textoBuscadoActual = "hidalgo"
+					observador.next("hidalgo")
+				}, 3000)
+			}
+		)
+
+		buscador.subscribe(
+			textoBuscado => console.log(`El usuario va la página '${this.paginaActual}, está ordenando por el campo '${this.ordenamientoActual}' y está buscando '${this.textoBuscadoActual}'. Hay que llamar nuevamente al api rest`)
+		)
+
+
+
 
 
 
