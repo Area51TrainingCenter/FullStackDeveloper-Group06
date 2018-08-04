@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable, Observer, merge } from 'rxjs';
-import { switchMap } from "rxjs/operators"
+import { switchMap, map } from "rxjs/operators"
 
 @Component({
 	selector: 'app-root',
@@ -50,19 +50,34 @@ export class AppComponent {
 						(observador: Observer<any>) => {
 							setTimeout(() => {
 								observador.next([
-									{ nombre: "Sergio" },
-									{ nombre: "Andrea" },
-									{ nombre: "Mónica" }
+									{ nombre: "Sergio", apellido: "Hidalgo" },
+									{ nombre: "Andrea", apellido: "Hidalgo" },
+									{ nombre: "Mónica", apellido: "Véliz" }
 								])
 							}, 5000)
 						}
 					)
 
 					return http
+				}),
+				map((valor: any[]) => {
+					const nuevoArreglo = valor.map(item => {
+						delete item.apellido
+						return item
+					})
+					return nuevoArreglo
+				}),
+				map((valor: any[]) => {
+					const nuevoArreglo = valor.map(item => {
+						item.nombre = item.nombre.toUpperCase()
+						return item
+					})
+					return nuevoArreglo
 				})
 			)
 			.subscribe(
 				(data) => {
+					console.log(data)
 					console.log(`El usuario va la página '${this.paginaActual}, está ordenando por el campo '${this.ordenamientoActual}' y está buscando '${this.textoBuscadoActual}'. Hay que llamar nuevamente al api rest`)
 					this.personas = data
 				}
