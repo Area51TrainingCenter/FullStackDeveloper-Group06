@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-4 offset-md-4">
+		<form class="form-signin" [formGroup]="grupoFormulario" (ngSubmit)="registrar()">
+			<h1 class="h3 mb-3 font-weight-normal">Registro</h1>
+
+			<label for="inputEmail" class="sr-only">Nombre completo</label>
+			<input type="text" id="inputEmail" class="form-control" placeholder="Nombre completo" formControlName="nombreCompleto">
+			<span class="help-block" *ngIf="!grupoFormulario.get('nombreCompleto').valid && grupoFormulario.get('nombreCompleto').hasError('required') && grupoFormulario.get('nombreCompleto').touched">El nombre completo es necesario</span>
+
+			<label for="inputNuevo" class="sr-only">Usuario</label>
+			<input type="text" id="inputNuevo" class="form-control" placeholder="Usuario" formControlName="usuario">
+			<span class="help-block" *ngIf="!grupoFormulario.get('usuario').valid && grupoFormulario.get('usuario').hasError('required') && grupoFormulario.get('usuario').touched">El correo es necesario</span>
+
+
+			<label for="inputPassword" class="sr-only">Contraseña</label>
+			<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" name="contrasena" formControlName="contrasena">
+			<span class="help-block" *ngIf="!grupoFormulario.get('contrasena').valid && grupoFormulario.get('contrasena').touched">La contraseña es necesaria</span>
+
+
+			<button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!grupoFormulario.valid">Registrar</button>
+			<p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+		</form>
+	</div>
+</div>
