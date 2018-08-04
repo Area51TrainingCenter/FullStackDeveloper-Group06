@@ -1,2 +1,7 @@
-==== {{imagenGato | async}} ======
-<img [src]="imagenGato | async">
+<table>
+	<tr *ngFor="let p of personas">
+		<td>
+			{{p.nombre}}
+		</td>
+	</tr>
+</table>

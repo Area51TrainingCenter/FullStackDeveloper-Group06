@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Observable, Observer } from 'rxjs';
+import { Observable, Observer, merge } from 'rxjs';
+import { switchMap } from "rxjs/operators"
 
 @Component({
 	selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent {
 	paginaActual: number = 0
 	ordenamientoActual: string = "nombre"
 	textoBuscadoActual: string = ""
+	personas: {}[] = []
 
 	ngOnInit() {
 		const paginador: Observable<number> = Observable.create(
@@ -23,10 +25,6 @@ export class AppComponent {
 			}
 		)
 
-		paginador.subscribe(
-			pagina => console.log(`El usuario va la página '${this.paginaActual}, está ordenando por el campo '${this.ordenamientoActual}' y está buscando '${this.textoBuscadoActual}'. Hay que llamar nuevamente al api rest`)
-		)
-
 		const ordenador: Observable<string> = Observable.create(
 			(observador: Observer<string>) => {
 				setTimeout(() => {
@@ -34,10 +32,6 @@ export class AppComponent {
 					observador.next("nombre")
 				}, 4000)
 			}
-		)
-
-		ordenador.subscribe(
-			campo => console.log(`El usuario va la página '${this.paginaActual}, está ordenando por el campo '${this.ordenamientoActual}' y está buscando '${this.textoBuscadoActual}'. Hay que llamar nuevamente al api rest`)
 		)
 
 		const buscador: Observable<string> = Observable.create(
@@ -49,9 +43,30 @@ export class AppComponent {
 			}
 		)
 
-		buscador.subscribe(
-			textoBuscado => console.log(`El usuario va la página '${this.paginaActual}, está ordenando por el campo '${this.ordenamientoActual}' y está buscando '${this.textoBuscadoActual}'. Hay que llamar nuevamente al api rest`)
-		)
+		merge(paginador, ordenador, buscador)
+			.pipe(
+				switchMap(() => {
+					const http: Observable<any> = Observable.create(
+						(observador: Observer<any>) => {
+							setTimeout(() => {
+								observador.next([
+									{ nombre: "Sergio" },
+									{ nombre: "Andrea" },
+									{ nombre: "Mónica" }
+								])
+							}, 5000)
+						}
+					)
+
+					return http
+				})
+			)
+			.subscribe(
+				(data) => {
+					console.log(`El usuario va la página '${this.paginaActual}, está ordenando por el campo '${this.ordenamientoActual}' y está buscando '${this.textoBuscadoActual}'. Hay que llamar nuevamente al api rest`)
+					this.personas = data
+				}
+			)
 
 
 
