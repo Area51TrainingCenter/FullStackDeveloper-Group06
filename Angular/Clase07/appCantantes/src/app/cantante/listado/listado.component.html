@@ -1,3 +1,36 @@
+<div fxLayout fxLayoutAlign="center">
+	<mat-card fxFlex="800px">
+		<mat-card-header fxLayout fxLayoutAlign="space-between">
+			<h1 mat-card-title>Cantantes</h1>
+			<button mat-mini-fab color="primary" (click)="nuevo()">
+				<mat-icon>add</mat-icon>
+			</button>
+		</mat-card-header>
+		<mat-card-content>
+			<mat-table [dataSource]="dataSource">
+
+				<ng-container matColumnDef="nombre">
+					<mat-header-cell *matHeaderCellDef>Nombre de cantante</mat-header-cell>
+					<mat-cell *matCellDef="let elem">{{elem.nombre}}</mat-cell>
+				</ng-container>
+
+				<ng-container matColumnDef="botones">
+					<mat-header-cell *matHeaderCellDef></mat-header-cell>
+					<mat-cell *matCellDef="let elem">
+						<button mat-mini-fab>
+							<mat-icon>delete</mat-icon>
+						</button>
+					</mat-cell>
+				</ng-container>
+
+				<mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
+				<mat-row *matRowDef="let elem; columns: columnasAMostrar"></mat-row>
+			</mat-table>
+		</mat-card-content>
+	</mat-card>
+
+</div>
+
 <div class="row">
 	<div class="col-8">
 		<table class="table table-hover table-striped">

@@ -20,19 +20,16 @@ export class LoginComponent {
 
 	ngOnInit() {
 		this.formulario = new FormGroup({
-			correo: new FormControl(null, [Validators.required, Validators.email, this.correoGratuito.bind(this)]),
+			usuario: new FormControl(null, Validators.required),
 			contrasena: new FormControl(null, Validators.required)
-
-			//  {required: true}
-			//  {tipoError: boolean}
 		})
 	}
 
 
 	loguearse() {
-		//const usuario: Usuario = { correo: this.formulario.value.correo, contrasena: this.formulario.value.contrasena }
+		const usuario: Usuario = { usuario: this.formulario.value.usuario, contrasena: this.formulario.value.contrasena }
 
-		//this.seguridadService.login(usuario)
+		this.seguridadService.login(usuario)
 	}
 
 	correoGratuito(form: FormControl): { [s: string]: boolean } {

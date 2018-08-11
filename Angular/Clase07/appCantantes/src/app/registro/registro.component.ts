@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SeguridadService } from '../servicios/seguridad.service';
+import { MatSnackBar, MatSnackBarRef } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-registro',
@@ -11,7 +13,7 @@ export class RegistroComponent implements OnInit {
 
 	grupoFormulario: FormGroup
 
-	constructor(private formBuilder: FormBuilder, private seguridadService: SeguridadService) { }
+	constructor(private formBuilder: FormBuilder, private seguridadService: SeguridadService, private notificador: MatSnackBar, private ruteador: Router) { }
 
 	ngOnInit() {
 		this.grupoFormulario = this.crearFormGroup()
@@ -28,8 +30,19 @@ export class RegistroComponent implements OnInit {
 	registrar() {
 		this.seguridadService.registro(this.grupoFormulario.value)
 			.subscribe(
-				data => console.log(data),
-				error => console.log(error)
+				data => {
+					const notificador: MatSnackBarRef<any> = this.notificador.open("Usuario registrado", null, { duration: 2000 })
+
+					notificador.afterDismissed()
+						.subscribe(
+							() => this.ruteador.navigate(["/"])
+						)
+				},
+				error => {
+					this.notificador.open("Ocurrió un error", null, {
+						duration: 2000
+					})
+				}
 			)
 	}
 

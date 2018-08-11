@@ -1,3 +1,13 @@
-<p>
-  edicion works!
-</p>
+<div mat-dialog-title>{{titulo}}</div>
+<div mat-dialog-content>
+	<form [formGroup]="grupo" fxLayout="column">
+		<mat-form-field>
+			<input type="text" placeholder="Nombre del cantante" matInput required formControlName="nombre">
+			<mat-error>El campo es requerido</mat-error>
+		</mat-form-field>
+		<div fxLayout fxLayoutAlign="space-between">
+			<button mat-raised-button color="primary" [disabled]="!grupo.valid" (click)="dialogoRef.close(grupo)">Grabar</button>
+			<button mat-flat-button (click)="dialogoRef.close()">Cancelar</button>
+		</div>
+	</form>
+</div>

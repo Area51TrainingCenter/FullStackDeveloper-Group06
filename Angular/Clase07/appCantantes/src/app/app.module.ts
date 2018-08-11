@@ -22,10 +22,7 @@ const rutas: Route[] = [
 	{ path: "registro", component: RegistroComponent },
 	{ path: "home", component: HomeComponent, canActivate: [AutenticacionGuard] },
 	{
-		path: "cantante", component: ListadoComponent, canActivate: [AutenticacionGuard], children: [
-			{ path: "nuevo", component: NuevoComponent },
-			{ path: "edicion", canActivate: [AutorizacionGuard], canDeactivate: [NoSalvadoGuard], component: EdicionComponent }
-		]
+		path: "cantante", component: ListadoComponent, canActivate: [AutenticacionGuard]
 	}
 ]
 
@@ -49,6 +46,7 @@ const rutas: Route[] = [
 		MaterialModule
 	],
 	providers: [],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
+	entryComponents: [EdicionComponent]
 })
 export class AppModule { }

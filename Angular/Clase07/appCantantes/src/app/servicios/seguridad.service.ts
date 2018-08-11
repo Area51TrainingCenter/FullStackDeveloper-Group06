@@ -3,6 +3,7 @@ import { Usuario } from '../modelos/usuario';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { pluck } from 'rxjs/operators'
 
 @Injectable({
 	providedIn: 'root'
@@ -15,6 +16,18 @@ export class SeguridadService {
 
 	registro(usuario: Usuario): Observable<any> {
 		return this.http.post("http://localhost:4002/usuario", usuario)
+	}
+
+	login(usuario: Usuario) {
+		this.http.post("http://localhost:4002/usuario/login", usuario)
+			.pipe(
+				pluck("resultado")
+			)
+			.subscribe((data: any) => {
+				localStorage.setItem("usuarioLogueado", JSON.stringify(data))
+				this.ruteador.navigate(["home"])
+				console.log(data)
+			})
 	}
 
 	/*listaUsuarios: Usuario[] = [
