@@ -1,0 +1,26 @@
+<div fxLayout fxLayoutAlign="center">
+	<mat-card fxFlex="400px" fxFlex.xs="320px">
+		<mat-card-header>
+			<h1 mat-card-title>Registro</h1>
+		</mat-card-header>
+		<mat-card-content>
+			<form [formGroup]="grupoFormulario" (ngSubmit)="registrar()" fxLayout="column">
+				<mat-form-field>
+					<input type="text" placeholder="Nombre completo" formControlName="nombreCompleto" matInput required>
+					<mat-error *ngIf="!grupoFormulario.get('nombreCompleto').valid && grupoFormulario.get('nombreCompleto').hasError('required') && grupoFormulario.get('nombreCompleto').touched">El nombre completo es necesario</mat-error>
+				</mat-form-field>
+				<mat-form-field>
+					<input type="text" placeholder="Usuario" formControlName="usuario" matInput required>
+					<mat-error *ngIf="!grupoFormulario.get('usuario').valid && grupoFormulario.get('usuario').hasError('required') && grupoFormulario.get('usuario').touched">El correo es necesario</mat-error>
+				</mat-form-field>
+				<mat-form-field>
+					<input type="password" placeholder="Contraseña" name="contrasena" formControlName="contrasena" matInput required>
+					<mat-error *ngIf="!grupoFormulario.get('contrasena').valid && grupoFormulario.get('contrasena').touched">La contraseña es necesaria</mat-error>
+				</mat-form-field>
+				<div fxLayout fxLayoutAlign="flex-end">
+					<button mat-raised-button color="primary" type="submit" [disabled]="!grupoFormulario.valid">Registrar</button>
+				</div>
+			</form>
+		</mat-card-content>
+	</mat-card>
+</div>

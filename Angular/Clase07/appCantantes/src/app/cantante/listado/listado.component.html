@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="col-8">
+		<table class="table table-hover table-striped">
+			<thead>
+				<tr>
+					<th>Cantante</th>
+					<th>Canción</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Shakira</td>
+					<td>Ojos así</td>
+				</tr>
+				<tr>
+					<td>Gabriel Romero</td>
+					<td>La Subienda</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-4">
+		<router-outlet></router-outlet>
+	</div>
+</div>
+
+
+
+<a [routerLink]="['/cantante','nuevo']" class="btn btn-success">Nuevo</a>
+<a [routerLink]="['/cantante','edicion']" class="btn btn-warning">Edición</a>

@@ -1,0 +1,34 @@
+<div fxLayout fxLayoutAlign="center">
+	<mat-card fxFlex="400px" fxFlex.xs="320px">
+		<mat-card-header>
+			<h1 mat-card-title>Login</h1>
+		</mat-card-header>
+		<mat-card-content>
+			<form [formGroup]="formulario" (ngSubmit)="loguearse()" fxLayout="column">
+				<mat-form-field>
+					<input type="email" placeholder="Correo" name="correo" formControlName="correo" matInput required>
+					<mat-error *ngIf="!formulario.get('correo').valid && formulario.get('correo').hasError('required') && formulario.get('correo').touched">El correo es necesario</mat-error>
+					<mat-error *ngIf="!formulario.get('correo').valid && formulario.get('correo').hasError('email') && formulario.get('correo').touched">El correo tiene que tener formato de correo</mat-error>
+					<mat-error *ngIf="!formulario.get('correo').valid && formulario.get('correo').hasError('correoGratuito') && formulario.get('correo').touched">El correo no puede ser gratuito</mat-error>
+				</mat-form-field>
+				<mat-form-field>
+					<input type="password" placeholder="Contraseña" name="contrasena" formControlName="contrasena" matInput required>
+					<mat-error *ngIf="!formulario.get('contrasena').valid && formulario.get('contrasena').touched">La contraseña es necesaria</mat-error>
+				</mat-form-field>
+				<div fxLayout fxLayoutAlign="space-between">
+					<a routerLink="/registro" mat-flat-button color="accent">Registro</a>
+					<button type="submit" [disabled]="!formulario.valid" mat-raised-button>Ingresar</button>
+				</div>
+
+
+
+
+
+
+
+
+
+			</form>
+		</mat-card-content>
+	</mat-card>
+</div>
