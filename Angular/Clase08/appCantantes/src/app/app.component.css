@@ -6,3 +6,7 @@ mat-sidenav-content {
 mat-sidenav {
 	width: 300px
 }
+
+mat-toolbar {
+	margin-bottom: 30px;
+}

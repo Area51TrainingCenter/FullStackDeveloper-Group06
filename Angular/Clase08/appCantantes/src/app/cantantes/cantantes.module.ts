@@ -5,13 +5,16 @@ import { CantantesRoutingModule } from './cantantes-routing.module';
 import { ListadoCantantesComponent } from './listado-cantantes/listado-cantantes.component';
 import { EdicionCantanteComponent } from './edicion-cantante/edicion-cantante.component';
 import { CompartidoModule } from '../compartido/compartido.module';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		CantantesRoutingModule,
-		CompartidoModule
+		CompartidoModule,
+		MaterialModule
 	],
-	declarations: [ListadoCantantesComponent, EdicionCantanteComponent]
+	declarations: [ListadoCantantesComponent, EdicionCantanteComponent],
+	entryComponents: [EdicionCantanteComponent]
 })
 export class CantantesModule { }

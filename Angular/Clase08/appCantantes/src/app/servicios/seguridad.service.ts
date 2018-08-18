@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../modelos/usuario';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -33,6 +33,16 @@ export class SeguridadService {
 	}
 
 	obtenerDato(campo: string) {
-		return localStorage.getItem("usuarioLgueado")[campo]
+		return JSON.parse(localStorage.getItem("usuarioLogueado"))[campo]
+	}
+
+	cabeceraAutorizacion() {
+		const accessToken = this.obtenerDato("accessToken")
+
+		const cabecera = new HttpHeaders({
+			authorization: `Bearer ${accessToken}`
+		})
+
+		return cabecera
 	}
 }
