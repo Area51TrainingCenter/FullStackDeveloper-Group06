@@ -6,14 +6,19 @@ import { LoginComponent } from './login/login.component';
 import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
 import { CabeceraComponent } from './cabecera/cabecera.component';
 import { CompartidoModule } from '../compartido/compartido.module';
+import { MaterialModule } from '../material/material.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		NucleoRoutingModule,
-		CompartidoModule
+		CompartidoModule,
+		MaterialModule,
+		ReactiveFormsModule,
+		FormsModule
 	],
 	declarations: [LoginComponent, MenuLateralComponent, CabeceraComponent],
-	exports: [CabeceraComponent, MenuLateralComponent]
+	exports: [CabeceraComponent, MenuLateralComponent, NucleoRoutingModule]
 })
 export class NucleoModule { }

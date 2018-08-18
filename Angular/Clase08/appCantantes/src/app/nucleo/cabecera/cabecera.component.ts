@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
-  selector: 'app-cabecera',
-  templateUrl: './cabecera.component.html',
-  styleUrls: ['./cabecera.component.css']
+	selector: 'app-cabecera',
+	templateUrl: './cabecera.component.html',
+	styleUrls: ['./cabecera.component.css']
 })
 export class CabeceraComponent implements OnInit {
 
-  constructor() { }
+	@Output() onAbrirMenu = new EventEmitter()
 
-  ngOnInit() {
-  }
+	constructor() { }
+
+	ngOnInit() {
+	}
+
+	abrirMenu() {
+		this.onAbrirMenu.emit()
+	}
 
 }
