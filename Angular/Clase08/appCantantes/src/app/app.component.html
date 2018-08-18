@@ -3,7 +3,7 @@
 		<app-menu-lateral (onCerrarMenu)="menuLateral.close()"></app-menu-lateral>
 	</mat-sidenav>
 	<mat-sidenav-content>
-		<mat-toolbar color="primary">
+		<mat-toolbar color="primary" *ngIf="estadoUsuario">
 			<app-cabecera (onAbrirMenu)="menuLateral.open()"></app-cabecera>
 		</mat-toolbar>
 		<router-outlet></router-outlet>

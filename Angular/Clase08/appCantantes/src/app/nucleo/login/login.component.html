@@ -11,7 +11,7 @@
 					<mat-error>Se necesita la contraseña</mat-error>
 				</mat-form-field>
 				<div fxLayout fxLayoutAlign="center">
-					<button mat-raised-button color="accent" [disabled]="!grupo.valid">Ingresar</button>
+					<button mat-raised-button color="accent" [disabled]="!grupo.valid" (click)="ingresar()">Ingresar</button>
 				</div>
 			</form>
 		</mat-card-content>

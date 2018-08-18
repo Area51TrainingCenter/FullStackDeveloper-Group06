@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, CanLoad, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SeguridadService } from './seguridad.service';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AutenticacionGuard implements CanActivate {
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return true;
-  }
+@Injectable()
+export class AutenticacionGuard implements CanLoad {
+
+	constructor(private seguridadService: SeguridadService, private ruteador: Router) { }
+
+	canLoad() {
+		//this.ruteador.navigate(["/"])
+		return this.seguridadService.estaAutenticado()
+	}
 }

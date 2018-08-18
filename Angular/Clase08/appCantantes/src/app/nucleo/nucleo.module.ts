@@ -8,6 +8,7 @@ import { CabeceraComponent } from './cabecera/cabecera.component';
 import { CompartidoModule } from '../compartido/compartido.module';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AutenticacionGuard } from '../servicios/autenticacion.guard';
 
 @NgModule({
 	imports: [
@@ -19,6 +20,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 		FormsModule
 	],
 	declarations: [LoginComponent, MenuLateralComponent, CabeceraComponent],
-	exports: [CabeceraComponent, MenuLateralComponent, NucleoRoutingModule]
+	exports: [CabeceraComponent, MenuLateralComponent, NucleoRoutingModule],
+	providers: [AutenticacionGuard]
 })
 export class NucleoModule { }
