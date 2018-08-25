@@ -1,0 +1,19 @@
+<div fxLayout fxLayoutAlign="center">
+	<mat-card fxFlex="400px" fxFlex.xs="320px">
+		<mat-card-content>
+			<form fxLayout="column" [formGroup]="grupo">
+				<mat-form-field>
+					<input type="text" matInput placeholder="Usuario" required formControlName="usuario">
+					<mat-error>Se necesita el usuario</mat-error>
+				</mat-form-field>
+				<mat-form-field>
+					<input type="password" matInput placeholder="Contraseña" required formControlName="contrasena">
+					<mat-error>Se necesita la contraseña</mat-error>
+				</mat-form-field>
+				<div fxLayout fxLayoutAlign="center">
+					<button mat-raised-button color="accent" [disabled]="!grupo.valid" (click)="ingresar()">Ingresar</button>
+				</div>
+			</form>
+		</mat-card-content>
+	</mat-card>
+</div>

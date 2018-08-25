@@ -1,0 +1,14 @@
+<mat-nav-list>
+	<a mat-list-item routerLink="/cantante" (click)="cerrarMenu()">
+		<mat-icon>face</mat-icon>
+		Cantante
+	</a>
+	<a mat-list-item routerLink="/cancion" (click)="cerrarMenu()">
+		<mat-icon>face</mat-icon>
+		Canción
+	</a>
+	<a mat-list-item (click)="cerrarMenu(); cerrarSesion()">
+		<mat-icon>lock</mat-icon>
+		Cerrar sesión
+	</a>
+</mat-nav-list>

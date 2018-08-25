@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>{{titulo}}</h1>
+<form [formGroup]="grupoForm">
+	<div mat-dialog-content fxLayout="column">
+		<mat-form-field fxFlex>
+			<input type="text" matInput placeholder="Nombre" required formControlName="nombre">
+			<mat-error>El nombre es requerido</mat-error>
+		</mat-form-field>
+	</div>
+	<div mat-dialog-actions fxLayout fxLayoutAlign="space-around">
+		<button mat-flat-button color="accent" [disabled]="!grupoForm.valid" (click)="dialog.close(grupoForm)">Grabar</button>
+		<button mat-flat-button color="primary" (click)="dialog.close()">Cancelar</button>
+	</div>
+</form>

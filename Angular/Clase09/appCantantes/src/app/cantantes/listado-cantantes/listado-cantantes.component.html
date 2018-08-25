@@ -1,0 +1,31 @@
+<div fxLayout fxLayoutAlign="center">
+	<mat-card fxFlex="800px" fxFlex.sm="600px" fxFlex.xs="320px">
+		<div fxLayout fxLayoutAlign="space-between center">
+			<h2>Cantantes</h2>
+			<button mat-mini-fab color="warn" matTooltip="AGREGAR CANTANTE" (click)="nuevo()">
+				<mat-icon>add</mat-icon>
+			</button>
+		</div>
+		<mat-card-content>
+			<mat-table [dataSource]="data">
+
+				<ng-container matColumnDef="nombre">
+					<mat-header-cell *matHeaderCellDef>Nombre del cantante</mat-header-cell>
+					<mat-cell *matCellDef="let elem">{{elem.nombre}}</mat-cell>
+				</ng-container>
+
+				<ng-container matColumnDef="botones">
+					<mat-header-cell *matHeaderCellDef></mat-header-cell>
+					<mat-cell *matCellDef="let elem">
+						<button mat-mini-fab (click)="eliminar(elem)">
+							<mat-icon>delete</mat-icon>
+						</button>
+					</mat-cell>
+				</ng-container>
+
+				<mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
+				<mat-row *matRowDef="let elem; columns: columnasAMostrar"></mat-row>
+			</mat-table>
+		</mat-card-content>
+	</mat-card>
+</div>
