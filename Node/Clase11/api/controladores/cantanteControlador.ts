@@ -1,6 +1,9 @@
 import { Request, Response, NextFunction } from "express"
 import ControladorBase from "./controladorBase"
 import Cantante from "../modelos/cantantes"
+import mongoose = require("mongoose")
+
+//const Cantante = mongoose.model("Cantante")
 
 class ControladorCantante extends ControladorBase {
 	constructor() {

@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row">
+		<form (ngSubmit)="grabar()" class="col-4" [formGroup]="grupo">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="nombre" formControlName="nombre">
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="apellido" formControlName="apellido">
+			</div>
+			<div class="form-group">
+				<input type="number" class="form-control" placeholder="edad" formControlName="edad">
+			</div>
+			<div class="form-group">
+				<input type="file" class="form-control" (change)="archivoSeleccionado($event)">
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" [disabled]="!grupo.valid">Guardar</button>
+			</div>
+		</form>
+	</div>
+</div>

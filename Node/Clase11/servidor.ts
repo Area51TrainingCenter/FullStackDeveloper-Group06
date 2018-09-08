@@ -3,10 +3,14 @@ import { Application } from "express"
 import express = require("express")
 import { ruteador as indexRutas } from "./rutas/indexRutas";
 import { ruteador as cantanteRutas } from "./rutas/cantanteRutas"
+import { ruteador as cancionRutas } from "./rutas/cancionRutas"
+import { ruteador as usuarioRutas } from "./rutas/usuarioRutas"
+
 require("dotenv").config({ path: "./variables.env" })
 import { errores } from "./manejadores/errores"
 import mongoose = require("mongoose")
 import bodyParser = require("body-parser")
+import cors = require("cors")
 
 // Declaraciones
 mongoose.Promise = global.Promise
@@ -18,14 +22,22 @@ const app: Application = express()
 app.set("PORT", process.env.PORT)
 
 // Middlewares
+app.use(cors())
 app.use(express.static("./publico"))
 app.use(bodyParser())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+// Modelos
+require("./api/modelos/usuarios")
+require("./api/modelos/cantantes")
+require("./api/modelos/canciones")
+
 // Rutas
 app.use("/", indexRutas)
 app.use("/cantante", cantanteRutas)
+app.use("/cancion", cancionRutas)
+app.use("/usuario", usuarioRutas)
 
 // Manejo de errores
 app.use(errores.paginaNoEncontrada)

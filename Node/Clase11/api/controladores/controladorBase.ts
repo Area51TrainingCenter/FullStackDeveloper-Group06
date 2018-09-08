@@ -13,6 +13,8 @@ class ControladorBase {
 	}
 
 	async listar(req: Request, res: Response) {
+		/*const filtro = req.params
+		const registros = await this.modelo.find(filtro)*/
 		const registros = await this.modelo.find()
 
 		res.json({ estado: 200, mensaje: "Listado", resultados: registros })
