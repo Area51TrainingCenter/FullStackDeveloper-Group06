@@ -1,16 +1,24 @@
 import { Request, Response, NextFunction } from "express"
-
+import ControladorBase from "./controladorBase"
 import Cantante from "../modelos/cantantes"
 
-const controlador = {
+class ControladorCantante extends ControladorBase {
+	constructor() {
+		super(Cantante)
+	}
+}
+
+export default ControladorCantante
+
+/*const controlador = {
 	async listar(req: Request, res: Response) {
 		const registros = await Cantante.find()
 
 		res.json({ estado: 200, mensaje: "Listado de cantantes", resultados: registros })
 
-		/*Cantante.find()
-			.then(registros => res.json(registros))
-			.catch(error => res.send(error)) */
+		//Cantante.find()
+		//	.then(registros => res.json(registros))
+		//	.catch(error => res.send(error)) 
 	},
 	async detallar(req: Request, res: Response) {
 		const _id = req.params._id
@@ -43,4 +51,4 @@ const controlador = {
 	}
 }
 
-export { controlador }
+export { controlador }*/

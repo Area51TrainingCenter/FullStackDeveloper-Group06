@@ -17,6 +17,7 @@
 		"@types/express": "^4.0.37",
 		"@types/mongoose": "^5.2.11",
 		"@types/node": "^10.1.2",
+		"body-parser": "^1.18.3",
 		"express": "^4.16.3",
 		"mongoose": "^5.2.13"
 	}
