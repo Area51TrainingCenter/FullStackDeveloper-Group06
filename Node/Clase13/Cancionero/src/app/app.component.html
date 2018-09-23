@@ -1,0 +1,7 @@
+<form [formGroup]='grupo' (ngSubmit)="login()">
+  <input type="text" name='correo' placeholder='Correo' formControlName='correo'>
+  <br>
+  <input type="password" name="contrasena" placeholder="Contrasena" formControlName="contrasena">
+  <br>
+  <button [disabled]='!grupo.valid'>Loguear</button>
+</form>
